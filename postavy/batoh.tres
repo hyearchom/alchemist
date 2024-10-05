@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://1la7hgvhx71w"]
+
+[ext_resource type="Script" path="res://postavy/Batoh.gd" id="1_eberq"]
+
+[resource]
+script = ExtResource("1_eberq")

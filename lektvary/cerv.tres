@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://gd78vej40oct"]
+
+[ext_resource type="Script" path="res://lektvary/ingredience.gd" id="1_8pjgl"]
+
+[resource]
+script = ExtResource("1_8pjgl")
+nazev = &"cerv"
+barva = Color(0.665604, 3.60981e-08, 6.257e-07, 1)
+leceni = -1
+odolnost = 0
+tiha = 1

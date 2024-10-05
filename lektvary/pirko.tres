@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b8qso84w17b1d"]
+
+[ext_resource type="Script" path="res://lektvary/ingredience.gd" id="1_x5528"]
+
+[resource]
+script = ExtResource("1_x5528")
+nazev = &"pirko"
+barva = Color(0.63656, 0.835306, 1, 1)
+leceni = 0
+odolnost = -1
+tiha = -1

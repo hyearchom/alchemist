@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://hddsly0jw3gv"]
+
+[ext_resource type="Script" path="res://lektvary/ingredience.gd" id="1_drk6c"]
+
+[resource]
+script = ExtResource("1_drk6c")
+nazev = &"jitrocel"
+barva = Color(1, 0.833333, 0, 1)
+leceni = 1
+odolnost = 0
+tiha = -1

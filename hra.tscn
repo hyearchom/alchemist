@@ -1,0 +1,507 @@
+[gd_scene load_steps=18 format=3 uid="uid://n7m0wicja20q"]
+
+[ext_resource type="Script" path="res://zobrazeni/Priprava.gd" id="1_7p2om"]
+[ext_resource type="Resource" uid="uid://lb1u7h6t4bjv" path="res://lektvary/slida.tres" id="3_akxmo"]
+[ext_resource type="Resource" uid="uid://dfun4pvh3seml" path="res://lektvary/dub.tres" id="3_cv7i3"]
+[ext_resource type="Resource" uid="uid://hddsly0jw3gv" path="res://lektvary/jitrocel.tres" id="3_ycxfb"]
+[ext_resource type="Resource" uid="uid://gd78vej40oct" path="res://lektvary/cerv.tres" id="5_425wm"]
+[ext_resource type="Resource" uid="uid://b8qso84w17b1d" path="res://lektvary/pirko.tres" id="5_ed205"]
+[ext_resource type="Resource" uid="uid://1la7hgvhx71w" path="res://postavy/batoh.tres" id="7_ejjia"]
+[ext_resource type="Script" path="res://postavy/hrac.gd" id="7_wp3x4"]
+[ext_resource type="Script" path="res://zobrazeni/Nabidka.gd" id="8_qsll2"]
+[ext_resource type="Script" path="res://lektvary/prisada.gd" id="9_4uq6y"]
+[ext_resource type="Script" path="res://zobrazeni/tlacitko.gd" id="9_lousc"]
+[ext_resource type="Resource" uid="uid://bnttyv400h6yt" path="res://postavy/vlastnosti_hrace.tres" id="11_r4dge"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n0rt"]
+bg_color = Color(0, 0, 0, 0.109804)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5t57"]
+outline_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_k6xnr"]
+font_size = 12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6jdf"]
+size = Vector2(44, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53mac"]
+size = Vector2(28, 45)
+
+[node name="Hra" type="Node"]
+
+[node name="Zobrazeni" type="CanvasLayer" parent="."]
+
+[node name="Okraj" type="MarginContainer" parent="Zobrazeni"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Priprava" type="VBoxContainer" parent="Zobrazeni/Okraj"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 25
+script = ExtResource("1_7p2om")
+lexikon_prisad = Array[Resource]([ExtResource("5_425wm"), ExtResource("3_cv7i3"), ExtResource("3_ycxfb"), ExtResource("5_ed205"), ExtResource("3_akxmo")])
+Batoh = ExtResource("7_ejjia")
+
+[node name="Slozky" type="HBoxContainer" parent="Zobrazeni/Okraj/Priprava"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="1" type="OptionButton" parent="Zobrazeni/Okraj/Priprava/Slozky"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="2" type="OptionButton" parent="Zobrazeni/Okraj/Priprava/Slozky"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="3" type="OptionButton" parent="Zobrazeni/Okraj/Priprava/Slozky"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="Vytvorit" type="Button" parent="Zobrazeni/Okraj/Priprava"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Brew potion"
+
+[node name="Vytvor" type="VBoxContainer" parent="Zobrazeni/Okraj/Priprava"]
+visible = false
+layout_mode = 2
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Priprava/Vytvor"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Priprava/Vytvor/Flakonek"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Priprava/Vytvor/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Efekt" type="Label" parent="Zobrazeni/Okraj/Priprava/Vytvor"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No effect"
+horizontal_alignment = 1
+
+[node name="Nabidka" type="VBoxContainer" parent="Zobrazeni/Okraj"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+script = ExtResource("8_qsll2")
+Batoh = ExtResource("7_ejjia")
+vlastnosti = ExtResource("11_r4dge")
+
+[node name="Pozadi" type="PanelContainer" parent="Zobrazeni/Okraj/Nabidka"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n0rt")
+
+[node name="Tlacitka" type="HBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Tlacitko_1" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_1"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_1/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_1/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_1"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_2" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_2"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_2/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_2/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_2"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_3" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_3"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_3/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_3/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_3"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_4" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_4"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_4/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_4/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_4"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_5" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_5"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_5"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_5/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_5/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_5"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_6" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_6"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_6"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_6/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_6/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_6"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_7" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_7"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_7"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_7/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_7/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_7"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_8" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_8"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_8"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_8/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_8/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_8"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Tlacitko_9" type="VBoxContainer" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka" groups=["tlacitka"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("9_lousc")
+
+[node name="Cislo" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_9"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_a5t57")
+horizontal_alignment = 1
+
+[node name="Flakonek" type="Control" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_9"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Barva" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_9/Flakonek"]
+polygon = PackedVector2Array(21, 22.5, 7, 43, 43, 43, 29, 22.5)
+
+[node name="Nadoba" type="Polygon2D" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_9/Flakonek"]
+color = Color(0.71, 0.913, 1, 0.356863)
+polygon = PackedVector2Array(15, 0, 20, 12, 20, 20, 4, 45, 46, 45, 30, 20, 30, 12, 35, 0)
+
+[node name="Nazev" type="Label" parent="Zobrazeni/Okraj/Nabidka/Pozadi/Tlacitka/Tlacitko_9"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_k6xnr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Mapa" type="Node2D" parent="."]
+
+[node name="Hrac" type="CharacterBody2D" parent="Mapa" groups=["hrac"]]
+position = Vector2(583, 451)
+script = ExtResource("7_wp3x4")
+Batoh = ExtResource("7_ejjia")
+vlastnosti = ExtResource("11_r4dge")
+
+[node name="test_Tvar" type="Polygon2D" parent="Mapa/Hrac"]
+position = Vector2(2, 16)
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-22, 20, -8, 19, -1, -2, 11, 22, 26, 23, 6, -22, 6, -53, 32, -39, 39, -53, 5, -72, 11, -100, -22, -106, -18, -75, -49, -49, -43, -38, -19, -55, -19, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/Hrac"]
+position = Vector2(-1, -4.5)
+shape = SubResource("RectangleShape2D_r6jdf")
+
+[node name="Pohled" type="Camera2D" parent="Mapa/Hrac"]
+
+[node name="Teren" type="TileMapLayer" parent="Mapa"]
+
+[node name="strasak_Teren" type="StaticBody2D" parent="Mapa"]
+position = Vector2(584, 539)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/strasak_Teren"]
+polygon = PackedVector2Array(-375, 0, 392, 0, 407, 14, -392, 14)
+
+[node name="Polygon2D" type="Polygon2D" parent="Mapa/strasak_Teren"]
+color = Color(1, 0.516667, 0, 1)
+polygon = PackedVector2Array(-395, 14, -378, -1, 389, -1, 406, 13)
+
+[node name="strasak_Prisada" type="Area2D" parent="Mapa"]
+position = Vector2(68, 67)
+script = ExtResource("9_4uq6y")
+nazev = &"jitrocel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/strasak_Prisada"]
+position = Vector2(235, 448.5)
+shape = SubResource("RectangleShape2D_53mac")
+
+[node name="Polygon2D" type="Polygon2D" parent="Mapa/strasak_Prisada"]
+color = Color(0.302642, 0.385493, 1.92523e-07, 1)
+polygon = PackedVector2Array(231, 471, 247, 471, 239, 464, 239, 441, 249, 429, 234, 435, 222, 424, 230, 439, 221, 446, 232, 444, 231, 463, 224, 474)
+
+[node name="strasak_Prisada2" type="Area2D" parent="Mapa"]
+position = Vector2(118, 66)
+script = ExtResource("9_4uq6y")
+nazev = &"jitrocel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/strasak_Prisada2"]
+position = Vector2(235, 448.5)
+shape = SubResource("RectangleShape2D_53mac")
+
+[node name="Polygon2D" type="Polygon2D" parent="Mapa/strasak_Prisada2"]
+color = Color(0.302642, 0.385493, 1.92523e-07, 1)
+polygon = PackedVector2Array(231, 471, 247, 471, 239, 464, 239, 441, 249, 429, 234, 435, 222, 424, 230, 439, 221, 446, 232, 444, 231, 463, 224, 474)
+
+[node name="strasak_Prisada3" type="Area2D" parent="Mapa"]
+position = Vector2(164, 67)
+script = ExtResource("9_4uq6y")
+nazev = &"jitrocel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/strasak_Prisada3"]
+position = Vector2(235, 448.5)
+shape = SubResource("RectangleShape2D_53mac")
+
+[node name="Polygon2D" type="Polygon2D" parent="Mapa/strasak_Prisada3"]
+color = Color(0.302642, 0.385493, 1.92523e-07, 1)
+polygon = PackedVector2Array(231, 471, 247, 471, 239, 464, 239, 441, 249, 429, 234, 435, 222, 424, 230, 439, 221, 446, 232, 444, 231, 463, 224, 474)
+
+[connection signal="pressed" from="Zobrazeni/Okraj/Priprava/Vytvorit" to="Zobrazeni/Okraj/Priprava" method="_pripravit_lektvar"]
+[connection signal="body_entered" from="Mapa/strasak_Prisada" to="Mapa/strasak_Prisada" method="_dotyk"]
+[connection signal="body_entered" from="Mapa/strasak_Prisada2" to="Mapa/strasak_Prisada2" method="_dotyk"]
+[connection signal="body_entered" from="Mapa/strasak_Prisada3" to="Mapa/strasak_Prisada3" method="_dotyk"]
