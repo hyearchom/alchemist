@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c720xvmp32ucu"]
+
+[ext_resource type="Script" path="res://zobrazeni/ucinek.gd" id="1_yvoaj"]
+[ext_resource type="Resource" uid="uid://bnttyv400h6yt" path="res://postavy/vlastnosti_hrace.tres" id="2_g1yss"]
+
+[node name="Ucinek" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+size_flags_vertical = 0
+script = ExtResource("1_yvoaj")
+vlastnosti = ExtResource("2_g1yss")
+
+[node name="Nazev" type="Label" parent="."]
+layout_mode = 2
+text = "L"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ukonceni" type="Timer" parent="."]
+one_shot = true

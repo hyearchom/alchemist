@@ -6,6 +6,7 @@
 script = ExtResource("1_kyx1a")
 nazev = &"dub"
 barva = Color(0.124246, 0.567924, 0, 1)
+trvani = 2
 leceni = 0
 odolnost = 1
 tiha = 1

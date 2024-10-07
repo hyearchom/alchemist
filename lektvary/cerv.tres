@@ -6,6 +6,7 @@
 script = ExtResource("1_8pjgl")
 nazev = &"cerv"
 barva = Color(0.665604, 3.60981e-08, 6.257e-07, 1)
+trvani = 2
 leceni = -1
 odolnost = 0
 tiha = 1

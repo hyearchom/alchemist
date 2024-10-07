@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://n7m0wicja20q"]
+[gd_scene load_steps=19 format=3 uid="uid://n7m0wicja20q"]
 
 [ext_resource type="Script" path="res://zobrazeni/Priprava.gd" id="1_7p2om"]
 [ext_resource type="Resource" uid="uid://lb1u7h6t4bjv" path="res://lektvary/slida.tres" id="3_akxmo"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://zobrazeni/Nabidka.gd" id="8_qsll2"]
 [ext_resource type="Script" path="res://lektvary/prisada.gd" id="9_4uq6y"]
 [ext_resource type="Script" path="res://zobrazeni/tlacitko.gd" id="9_lousc"]
+[ext_resource type="Script" path="res://zobrazeni/Pusobeni.gd" id="11_bdsbk"]
 [ext_resource type="Resource" uid="uid://bnttyv400h6yt" path="res://postavy/vlastnosti_hrace.tres" id="11_r4dge"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n0rt"]
@@ -56,7 +57,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 25
 script = ExtResource("1_7p2om")
 lexikon_prisad = Array[Resource]([ExtResource("5_425wm"), ExtResource("3_cv7i3"), ExtResource("3_ycxfb"), ExtResource("5_ed205"), ExtResource("3_akxmo")])
-Batoh = ExtResource("7_ejjia")
+batoh = ExtResource("7_ejjia")
 
 [node name="Slozky" type="HBoxContainer" parent="Zobrazeni/Okraj/Priprava"]
 unique_name_in_owner = true
@@ -111,7 +112,7 @@ layout_mode = 2
 size_flags_vertical = 8
 alignment = 2
 script = ExtResource("8_qsll2")
-Batoh = ExtResource("7_ejjia")
+batoh = ExtResource("7_ejjia")
 vlastnosti = ExtResource("11_r4dge")
 
 [node name="Pozadi" type="PanelContainer" parent="Zobrazeni/Okraj/Nabidka"]
@@ -431,13 +432,22 @@ label_settings = SubResource("LabelSettings_k6xnr")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Pusobeni" type="HBoxContainer" parent="Zobrazeni/Okraj"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+alignment = 2
+script = ExtResource("11_bdsbk")
+vlastnosti = ExtResource("11_r4dge")
+
 [node name="Mapa" type="Node2D" parent="."]
 
 [node name="Hrac" type="CharacterBody2D" parent="Mapa" groups=["hrac"]]
 position = Vector2(583, 451)
 script = ExtResource("7_wp3x4")
-Batoh = ExtResource("7_ejjia")
 vlastnosti = ExtResource("11_r4dge")
+batoh = ExtResource("7_ejjia")
 
 [node name="test_Tvar" type="Polygon2D" parent="Mapa/Hrac"]
 position = Vector2(2, 16)

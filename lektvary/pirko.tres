@@ -6,6 +6,7 @@
 script = ExtResource("1_x5528")
 nazev = &"pirko"
 barva = Color(0.63656, 0.835306, 1, 1)
+trvani = -1
 leceni = 0
 odolnost = -1
 tiha = -1

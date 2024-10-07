@@ -6,6 +6,7 @@
 script = ExtResource("1_drk6c")
 nazev = &"jitrocel"
 barva = Color(1, 0.833333, 0, 1)
+trvani = -1
 leceni = 1
 odolnost = 0
-tiha = -1
+tiha = -3

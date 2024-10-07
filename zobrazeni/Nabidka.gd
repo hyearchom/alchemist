@@ -1,18 +1,18 @@
 extends VBoxContainer
 
-@export var Batoh: Resource
+@export var batoh: Resource
 @export var vlastnosti: Resource
 
 func _ready() -> void:
 	get_tree().call_group('tlacitka', 'hide')
-	Batoh.lektvary_zmeneny.connect(_sestavit_nabidku)
+	batoh.lektvary_zmeneny.connect(_sestavit_nabidku)
 
 
 func _sestavit_nabidku() -> void:
 	get_tree().call_group('tlacitka', 'hide')
 	
 	var poradi: int = 1
-	for zaznam: String in Batoh.lektvary:
+	for zaznam: String in batoh.lektvary:
 		var cesta_tlacitko: String = '%Tlacitko_{0}'.format([poradi])
 		var tlacitko: Node = get_node(cesta_tlacitko)
 		var jmenovka: Node = get_node(cesta_tlacitko + '/Nazev')
@@ -20,10 +20,10 @@ func _sestavit_nabidku() -> void:
 		
 		tlacitko.show()
 		tlacitko.nazev = zaznam
-		tlacitko.pocet = Batoh.lektvary[zaznam]['pocet']
+		tlacitko.pocet = batoh.lektvary[zaznam]['pocet']
 		
 		jmenovka.text = zaznam
-		barva.color = Batoh.lektvary[zaznam]['barva']
+		barva.color = batoh.lektvary[zaznam]['barva']
 		poradi += 1
 
 
@@ -41,5 +41,7 @@ func _vypit_lektvar(poradi:int) -> void:
 	if not tlacitko.visible:
 		return
 	
-	vlastnosti.pusobeni(Batoh.lektvary[nazev_lektvaru].efekt)
-	Batoh.zmena(nazev_lektvaru, -1, Batoh.lektvary)
+	vlastnosti.pusobeni(
+		batoh.lektvary[nazev_lektvaru].efekt,
+		batoh.lektvary[nazev_lektvaru].trvani)
+	batoh.zmena(nazev_lektvaru, -1, batoh.lektvary)

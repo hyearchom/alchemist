@@ -1,11 +1,11 @@
 extends Node
 
 @export var lexikon_prisad: Array[Resource]
-@export var Batoh: Resource
+@export var batoh: Resource
 
 
 func _ready() -> void:
-	Batoh.prisady_zmeneny.connect(_sestavit_nabidku_prisad)
+	batoh.prisady_zmeneny.connect(_sestavit_nabidku_prisad)
 	_sestavit_nabidku_prisad()
 	_overit_vybrane()
 
@@ -14,7 +14,7 @@ func _sestavit_nabidku_prisad() -> void:
 	for nabidka:OptionButton in %Slozky.get_children():
 		nabidka.clear()
 		nabidka.add_item('---')
-		for prisada:StringName in Batoh.prisady:
+		for prisada:StringName in batoh.prisady:
 			nabidka.add_item(prisada)
 
 
@@ -22,15 +22,22 @@ func _pripravit_lektvar() -> void:
 	var lektvar: Dictionary
 	var vybrane_prisady: Array = _overit_vybrane()
 	
+	# podmínky vybrání ingrediencí
+	if not vybrane_prisady:
+		return
+	
+	# inicializace slovníku
 	lektvar = {
 		'efekt': {
 			'leceni': 0,
 			'odolnost': 0,
 			'tiha': 0,
 			},
+		'trvani': 0,
 		'barva': Color()
 		}
 	
+	# stanovení efektu
 	for prisada: Resource in vybrane_prisady:
 		lektvar.efekt.leceni += prisada.leceni
 		lektvar.efekt.odolnost += prisada.odolnost
@@ -40,6 +47,14 @@ func _pripravit_lektvar() -> void:
 		if lektvar.efekt[hodnota] == 0:
 			lektvar.efekt.erase(hodnota)
 	
+	# určení doby trvání efektu
+	for prisada: Resource in vybrane_prisady:
+		lektvar.trvani += prisada.trvani
+		
+		if lektvar.trvani < 1:
+			lektvar.trvani = 1
+	
+	# určení barvy
 	for prisada: Resource in vybrane_prisady:
 		if not lektvar.barva:
 			lektvar.barva = prisada.barva
@@ -48,8 +63,8 @@ func _pripravit_lektvar() -> void:
 
 	_znazornit_lektvar(lektvar)
 	
-	Batoh.zmena(
-		_pojmenovat_lekvar(vybrane_prisady), 1, Batoh.lektvary, lektvar)
+	batoh.zmena(
+		_pojmenovat_lekvar(vybrane_prisady), 1, batoh.lektvary, lektvar)
 
 
 func _overit_vybrane() -> Array:
